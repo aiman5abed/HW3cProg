@@ -1,0 +1,2 @@
+Min sum: -3
+Number of subarrays: 2
