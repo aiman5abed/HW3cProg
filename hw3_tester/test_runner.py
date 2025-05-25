@@ -1,51 +1,77 @@
 #!/usr/bin/env python3
-import sys, os, json, subprocess
+import os
+import sys
+import json
+import subprocess
 
-def load_manifest(path):
-    with open(path, 'r') as f:
-        return json.load(f)
+"""
+Test Runner for HW3cProg
+- Assumes executables are placed in `hw3_tester/execfiles/` named exactly as keys in tests_all.json (e.g. hw3_q1).
+- `tests_all.json` lives alongside this script in `hw3_tester/`.
+- I/O paths in the manifest are relative to the repository root.
+- Run by simply invoking:
+    ./test_runner.py
+"""
 
-def run_test(exe_path, inp_path, out_path):
-    with open(inp_path) as f: inp = f.read()
-    expected = open(out_path).read()
-    proc = subprocess.run([exe_path], input=inp, text=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    actual = proc.stdout
-    if actual.strip() == expected.strip():
-        return True, ""
-    diff = (
-        f"--- Expected ({out_path})\n"
-        f"+++ Actual   ({exe_path})\n"
-        f"- {expected!r}\n+ {actual!r}\n"
-    )
-    return False, diff
+# Directories
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))       # hw3_tester/
+REPO_ROOT  = os.path.dirname(SCRIPT_DIR)                     # repository root
+EXEC_DIR   = os.path.join(SCRIPT_DIR, 'execfiles')          # where executables reside
 
-def main():
-    if len(sys.argv) != 3:
-        print("Usage: test_runner.py <path/to/binary> <tests_all.json>")
-        sys.exit(1)
+# Load test manifest
+MANIFEST_PATH = os.path.join(SCRIPT_DIR, 'tests_all.json')
+if not os.path.isfile(MANIFEST_PATH):
+    print(f"[ERROR] Cannot find manifest at {MANIFEST_PATH}")
+    sys.exit(1)
+with open(MANIFEST_PATH, 'r') as f:
+    manifest = json.load(f)
 
-    exe = sys.argv[1]
-    manifest = load_manifest(sys.argv[2])
-    key = os.path.basename(exe)  # expects keys like 'hw3_q1', etc.
+all_passed = True
 
-    if key not in manifest:
-        print(f"[ERROR] No tests defined for '{key}'")
-        sys.exit(1)
+for qname, tests in manifest.items():
+    exe_path = os.path.join(EXEC_DIR, qname)
+    if not (os.path.isfile(exe_path) and os.access(exe_path, os.X_OK)):
+        print(f"[SKIP] {qname}: executable not found or not executable: {exe_path}")
+        all_passed = False
+        continue
 
-    tests = manifest[key]
+    print(f"=== Testing {qname} ===")
     passed = 0
-    for inp, out in tests:
-        ok, diff = run_test(exe, inp, out)
-        status = "PASS" if ok else "FAIL"
-        print(f"[{status}] {key}: {os.path.basename(inp)}")
-        if not ok:
-            print(diff)
-        else:
+    total  = len(tests)
+
+    for inp_rel, out_rel in tests:
+        inp_path = os.path.join(REPO_ROOT, inp_rel)
+        out_path = os.path.join(REPO_ROOT, out_rel)
+
+        # Read files
+        try:
+            with open(inp_path, 'r') as fi:
+                inp_data = fi.read()
+            with open(out_path, 'r') as fo:
+                expected = fo.read()
+        except FileNotFoundError as e:
+            print(f"[ERROR] Missing file: {e.filename}")
+            all_passed = False
+            continue
+
+        # Run executable
+        proc = subprocess.run([exe_path], input=inp_data, text=True,
+                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        actual = proc.stdout
+
+        # Compare results
+        if actual.strip() == expected.strip():
+            print(f"[PASS] {os.path.basename(inp_path)} -> {os.path.basename(out_path)}")
             passed += 1
+        else:
+            print(f"[FAIL] {os.path.basename(inp_path)} -> {os.path.basename(out_path)}")
+            print('--- Expected:')
+            print(expected)
+            print('--- Actual:')
+            print(actual)
+            print()
+            all_passed = False
 
-    total = len(tests)
-    print(f"\nSummary: {passed}/{total} tests passed for {key}")
-    sys.exit(0 if passed == total else 1)
+    print(f"{passed}/{total} passed for {qname}\n")
 
-if __name__ == "__main__":
-    main()
+sys.exit(0 if all_passed else 1)
