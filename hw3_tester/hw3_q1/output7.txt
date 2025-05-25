@@ -1,0 +1,2 @@
+Min sum: 0
+Number of subarrays: 210

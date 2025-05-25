@@ -1,0 +1,54 @@
+{
+  "hw3_q1": [
+    ["hw3_tester/hw3_q1/input_official.txt", "hw3_tester/hw3_q1/output_official.txt"],
+    ["hw3_tester/hw3_q1/input1.txt", "hw3_tester/hw3_q1/output1.txt"],
+    ["hw3_tester/hw3_q1/input2.txt", "hw3_tester/hw3_q1/output2.txt"],
+    ["hw3_tester/hw3_q1/input3.txt", "hw3_tester/hw3_q1/output3.txt"],
+    ["hw3_tester/hw3_q1/input4.txt", "hw3_tester/hw3_q1/output4.txt"],
+    ["hw3_tester/hw3_q1/input5.txt", "hw3_tester/hw3_q1/output5.txt"],
+    ["hw3_tester/hw3_q1/input6.txt", "hw3_tester/hw3_q1/output6.txt"],
+    ["hw3_tester/hw3_q1/input7.txt", "hw3_tester/hw3_q1/output7.txt"],
+    ["hw3_tester/hw3_q1/input8.txt", "hw3_tester/hw3_q1/output8.txt"],
+    ["hw3_tester/hw3_q1/input9.txt", "hw3_tester/hw3_q1/output9.txt"]
+  ],
+  "hw3_q2": [
+    ["hw3_tester/hw3_q2/input1_official.txt", "hw3_tester/hw3_q2/output1_official.txt"],
+    ["hw3_tester/hw3_q2/input2_official.txt", "hw3_tester/hw3_q2/output2_official.txt"],
+    ["hw3_tester/hw3_q2/input1.txt", "hw3_tester/hw3_q2/output1.txt"],
+    ["hw3_tester/hw3_q2/input2.txt", "hw3_tester/hw3_q2/output2.txt"],
+    ["hw3_tester/hw3_q2/input3.txt", "hw3_tester/hw3_q2/output3.txt"],
+    ["hw3_tester/hw3_q2/input4.txt", "hw3_tester/hw3_q2/output4.txt"],
+    ["hw3_tester/hw3_q2/input5.txt", "hw3_tester/hw3_q2/output5.txt"],
+    ["hw3_tester/hw3_q2/input6.txt", "hw3_tester/hw3_q2/output6.txt"],
+    ["hw3_tester/hw3_q2/input7.txt", "hw3_tester/hw3_q2/output7.txt"],
+    ["hw3_tester/hw3_q2/input8.txt", "hw3_tester/hw3_q2/output8.txt"],
+    ["hw3_tester/hw3_q2/input9.txt", "hw3_tester/hw3_q2/output9.txt"]
+  ],
+  "hw3_q3": [
+    ["hw3_tester/hw3_q3/input1_official.txt", "hw3_tester/hw3_q3/output1_official.txt"],
+    ["hw3_tester/hw3_q3/input2_official.txt", "hw3_tester/hw3_q3/output2_official.txt"],
+    ["hw3_tester/hw3_q3/input1.txt", "hw3_tester/hw3_q3/output1.txt"],
+    ["hw3_tester/hw3_q3/input2.txt", "hw3_tester/hw3_q3/output2.txt"],
+    ["hw3_tester/hw3_q3/input3.txt", "hw3_tester/hw3_q3/output3.txt"],
+    ["hw3_tester/hw3_q3/input4.txt", "hw3_tester/hw3_q3/output4.txt"],
+    ["hw3_tester/hw3_q3/input5.txt", "hw3_tester/hw3_q3/output5.txt"],
+    ["hw3_tester/hw3_q3/input6.txt", "hw3_tester/hw3_q3/output6.txt"],
+    ["hw3_tester/hw3_q3/input7.txt", "hw3_tester/hw3_q3/output7.txt"],
+    ["hw3_tester/hw3_q3/input8.txt", "hw3_tester/hw3_q3/output8.txt"],
+    ["hw3_tester/hw3_q3/input9.txt", "hw3_tester/hw3_q3/output9.txt"]
+  ],
+  "hw3_q4": [
+    ["hw3_tester/hw3_q4/input1_official.txt", "hw3_tester/hw3_q4/output1_official.txt"],
+    ["hw3_tester/hw3_q4/input2_official.txt", "hw3_tester/hw3_q4/output2_official.txt"],
+    ["hw3_tester/hw3_q4/input3_official.txt", "hw3_tester/hw3_q4/output3_official.txt"],
+    ["hw3_tester/hw3_q4/input1.txt", "hw3_tester/hw3_q4/output1.txt"],
+    ["hw3_tester/hw3_q4/input2.txt", "hw3_tester/hw3_q4/output2.txt"],
+    ["hw3_tester/hw3_q4/input3.txt", "hw3_tester/hw3_q4/output3.txt"],
+    ["hw3_tester/hw3_q4/input4.txt", "hw3_tester/hw3_q4/output4.txt"],
+    ["hw3_tester/hw3_q4/input5.txt", "hw3_tester/hw3_q4/output5.txt"],
+    ["hw3_tester/hw3_q4/input6.txt", "hw3_tester/hw3_q4/output6.txt"],
+    ["hw3_tester/hw3_q4/input7.txt", "hw3_tester/hw3_q4/output7.txt"],
+    ["hw3_tester/hw3_q4/input8.txt", "hw3_tester/hw3_q4/output8.txt"],
+    ["hw3_tester/hw3_q4/input9.txt", "hw3_tester/hw3_q4/output9.txt"]
+  ]
+}
